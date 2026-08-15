@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;900&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+
+  --color-background: #020617;
+}
 
 @layer base {
   body {
     @apply bg-background text-slate-100 antialiased;
+    font-family: "Inter", sans-serif;
   }
 }
 
@@ -29,10 +35,7 @@
 }
 
 /* Print Styles */
-/* Print Styles */
 @media print {
-
-  /* Reset global styles */
   html,
   body {
     height: auto !important;
@@ -40,12 +43,10 @@
     background: white !important;
   }
 
-  /* Hide everything by default */
   body * {
     visibility: hidden;
   }
 
-  /* Reset App wrapper constraints */
   #root,
   .min-h-screen,
   .overflow-hidden,
@@ -53,11 +54,9 @@
     overflow: visible !important;
     height: auto !important;
     position: static !important;
-    /* Break out of relative positioning contexts */
     display: block !important;
   }
 
-  /* Target the content to print */
   .print-content,
   .print-content * {
     visibility: visible;
@@ -78,14 +77,12 @@
     z-index: 9999;
   }
 
-  /* Correct page breaks */
   .page-break {
     break-after: page;
     page-break-after: always;
   }
 
-  /* Ensure items don't break awkwardly */
-  .print-content>div {
+  .print-content > div {
     break-inside: avoid;
     page-break-inside: avoid;
   }
